@@ -72,6 +72,7 @@ namespace ElevatorControl
                 printFloors(NewFloor, currentFloor, getmove);
 
                 NewFloor = currentFloor; ;
+
             }                        
             
             selectFloor();
