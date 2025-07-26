@@ -71,22 +71,7 @@ namespace ElevatorControl
                 Console.WriteLine("Elevator arraving\n");
                 printFloors(NewFloor, currentFloor, getmove);
 
-                //currentFloor = NewFloor;
-
-                Console.WriteLine("Please select a floor: ");
-
-                Console.WriteLine("1");
-                Console.WriteLine("2");
-                Console.WriteLine("3");
-                Console.WriteLine("4");
-                Console.WriteLine("5\n");
-
-                floorSelected = Convert.ToInt32(Console.ReadLine());
-
-                printFloors(NewFloor, currentFloor, move);
-                Console.WriteLine(stop(ElevatorStatus.STOPPED.ToString()));
-                Console.WriteLine(arrive());
-                Console.WriteLine(doors(ElevatorStatus.OPENING.ToString()));
+                NewFloor = currentFloor; ;
             }                        
             
             selectFloor();
