@@ -71,7 +71,7 @@ namespace ElevatorControl
                 Console.WriteLine("Elevator arraving\n");
                 printFloors(NewFloor, currentFloor, getmove);
 
-                //currentFloor = NewFloor;
+                NewFloor = currentFloor;
 
                 Console.WriteLine("Please select a floor: ");
 
