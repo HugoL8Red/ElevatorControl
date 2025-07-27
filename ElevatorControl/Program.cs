@@ -10,18 +10,15 @@
             Elevator elevator = new Elevator(min: 1, max: 5);
             int result = 0;
             string floor = Console.ReadLine();
-            elevator.validFloor = int.TryParse(floor, out result);
-            elevator.validFloor = (result < 1 || result > 5) ? false : true;
+            elevator.validFloor = Number.validNumber(floor, out result);
 
             while (elevator.validFloor == false)
             {
                 elevator.validFloor = false;
                 Console.WriteLine("Please enter a number between 1 and 5");
                 floor = Console.ReadLine();
-                elevator.validFloor = int.TryParse(floor, out result);
-                elevator.validFloor = (result < 1 || result > 5) ? false : true;
-            }
-            ;
+                elevator.validFloor = Number.validNumber(floor, out result);
+            };
 
             elevator.currentFloor = result;
 

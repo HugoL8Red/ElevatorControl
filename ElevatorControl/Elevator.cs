@@ -134,31 +134,27 @@ namespace ElevatorControl
 
             string florInserted = Console.ReadLine();
 
-            validFloor = int.TryParse(florInserted, out result);
-            validFloor = (result < 1 || result > 5) ? false : true;
-
+            validFloor = Number.validNumber(florInserted, out result);
 
             while (validFloor == false)
             {
                 validFloor = false;
                 Console.WriteLine("Please enter a number between 1 and 5");
                 florInserted = Console.ReadLine();
-                validFloor = int.TryParse(florInserted, out result);
-                validFloor = (result < 1 || result > 5) ? false : true;
-
-            }
-            ;
+                validFloor = Number.validNumber(florInserted, out result);
+            };
 
             floorSelected = result;
 
             //Validate if the button pressed is the same floor that the user is
             while (!toContinue)
             {
-                if (floorSelected == 0 || floorSelected > 5)
-                {
-                    Console.WriteLine("Invalid floor. Please enter a number between 1 and 5.");
-                }
-                else if (floorSelected == currentFloor)
+                //if (floorSelected == 0 || floorSelected > 5)
+                //{
+                //    Console.WriteLine("Invalid floor. Please enter a number between 1 and 5.");
+                //}
+                //else 
+                if (floorSelected == currentFloor)
                 {
                     Console.WriteLine("You have selected the floor that you are right now");
                     Console.WriteLine("Please select a floor: ");
@@ -264,5 +260,17 @@ namespace ElevatorControl
 
         [Description("OPENING")]
         OPENING = 6
+    }
+
+    static class Number
+    {
+        public static bool validNumber(string floorInserted, out int result)
+        {
+            var validFloor = int.TryParse(floorInserted, out result);
+            validFloor = (result < 1 || result > 5) ? false : true;
+            return validFloor;
+        }
+
+        public static double Pi = 3.14159;
     }
 }
