@@ -15,7 +15,8 @@ namespace ElevatorControl
         public int NewFloor { get; set; } = 0;
         public int min { get; set; } = 0;
         public int max { get; set; } = 0;
-        public bool Exit { get; set; } = false;
+        public bool Exit { get; set; } = false;        
+        public bool validFloor { get; set; } = true;
 
         public Elevator(int currentFloor = 0, int min = 0, int max = 0) 
         {
@@ -121,6 +122,7 @@ namespace ElevatorControl
         {
             bool toContinue = false;
             timeElevator = 0;
+            int result = 0;
 
             //Sjow floors
             Console.WriteLine("Please select a floor: ");
@@ -130,7 +132,24 @@ namespace ElevatorControl
             Console.WriteLine("4");
             Console.WriteLine("5\n");
 
-            floorSelected = Convert.ToInt32(Console.ReadLine());
+            string florInserted = Console.ReadLine();
+
+            validFloor = int.TryParse(florInserted, out result);
+            validFloor = (result < 1 || result > 5) ? false : true;
+
+
+            while (validFloor == false)
+            {
+                validFloor = false;
+                Console.WriteLine("Please enter a number between 1 and 5");
+                florInserted = Console.ReadLine();
+                validFloor = int.TryParse(florInserted, out result);
+                validFloor = (result < 1 || result > 5) ? false : true;
+
+            }
+            ;
+
+            floorSelected = result;
 
             //Validate if the button pressed is the same floor that the user is
             while (!toContinue)

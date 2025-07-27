@@ -7,8 +7,23 @@
             Console.WriteLine("Welcome to Hugo elevator!!");
             Console.Write("Enter which floor you are: ");
 
+            Elevator elevator = new Elevator(min: 1, max: 5);
+            int result = 0;
             string floor = Console.ReadLine();
-            Elevator elevator = new Elevator(Convert.ToInt32(floor), 1, 5);
+            elevator.validFloor = int.TryParse(floor, out result);
+            elevator.validFloor = (result < 1 || result > 5) ? false : true;
+
+            while (elevator.validFloor == false)
+            {
+                elevator.validFloor = false;
+                Console.WriteLine("Please enter a number between 1 and 5");
+                floor = Console.ReadLine();
+                elevator.validFloor = int.TryParse(floor, out result);
+                elevator.validFloor = (result < 1 || result > 5) ? false : true;
+            }
+            ;
+
+            elevator.currentFloor = result;
 
             while (true)
             {
@@ -16,7 +31,7 @@
                 {
                     break; // Exit the loop
                 }
-               
+
                 //Create elevator object
                 floor = elevator.NewFloor == 0 ? floor : elevator.NewFloor.ToString();
 
@@ -42,5 +57,6 @@
 
             Console.ReadKey();
         }
+
     }
 }
